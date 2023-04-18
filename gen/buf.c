@@ -63,7 +63,6 @@ char * cap_packet(char *buf, uint32_t size)
 {
 	char *temp = resize(size+1,size,buf);
 	
-	/* size is og index + 1 anyways */ 
 	temp[size] = '\0';
 	
 	return temp;
