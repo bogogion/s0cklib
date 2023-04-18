@@ -2,6 +2,18 @@
 #ifndef BUF_H
 #define BUF_H
 
+/* tool for printing stuff */
+#define BYTE_TO_BINARY_PATTERN "%c%c%c%c%c%c%c%c"
+#define BYTE_TO_BINARY(byte)  \
+  (byte & 0x80 ? '1' : '0'), \
+  (byte & 0x40 ? '1' : '0'), \
+  (byte & 0x20 ? '1' : '0'), \
+  (byte & 0x10 ? '1' : '0'), \
+  (byte & 0x08 ? '1' : '0'), \
+  (byte & 0x04 ? '1' : '0'), \
+  (byte & 0x02 ? '1' : '0'), \
+  (byte & 0x01 ? '1' : '0') 
+
 /* buffer tools */
 char * create_buf(uint32_t size);
 void replace(char *buf, uint32_t size, uint32_t offset, char *replace, uint32_t size_of_replace);
