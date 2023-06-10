@@ -87,6 +87,23 @@ struct s_tcphdr
 	uint16_t urg_p;
 };
 
+
+/* ease of use wrapper for s_tcphdr */
+struct s_tcp
+{
+	uint32_t source_addr, dest_addr;
+
+	uint16_t sport, dport;
+
+	uint32_t seq, ack;
+
+	uint16_t length; /* ipv4 header + tpc header length */
+
+	uint8_t offset : 4;
+	uint8_t flag;
+	uint16_t win_size, urgency_pointer;
+};
+
 /* ICMP */
 struct s_icmp
 {

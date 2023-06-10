@@ -55,6 +55,8 @@ uint16_t gen_uint16_rand_identity_quick()
 	return rand_num;
 }
 
+/* not as fast but more randomized. use this only for a consistent / repeated connection */
+
 uint16_t gen_uint16_rand_identity()
 {
 	/* read 20 bytes from urandom */
@@ -117,6 +119,34 @@ void create_udp_packet(struct s_udphdr *hdr, struct s_iphdr4 *ihdr, uint16_t spo
 		printf("Checksum currently unavaible, will be needed for IPv6\n");
 	}
 }
+
+/* void create_tcp_packet(struct s_tcphdr *output, struct s_tcp psuedo_tcp)
+{
+	output->sport = pseudo_tcp.sport;
+	output->dport = pseudo_tcp.dport;
+
+	output->seq_num = pseudo_tcp.seq;
+	output->ack_num = pseudo_tcp.ack;
+
+	output->off_res = (pseudo_tcp.offset << 4);
+	output->flags = pseudo_tcp.flag;
+
+	output->win_size = pseudo_tcp.win_size;
+	output->urg_p = pseudo_tcp.urgency_pointer;
+	
+	struct s_pseudo_ipv4 *pseudo_ipv4;
+	pseudo_ipv4 = (s_pseudo_ipv4 *)malloc(12);
+
+	pseudo_ipv4->src_addr = psuedo_tcp.source_addr;
+	pseudo_ipv4->dest_addr = psuedo_tcp.dest_addr;
+	pseudo_ipv4->zero = 0x0;
+	pseudo_ipv4->prot = P_TCP;
+	pseudo_ipv4->len = psuedo_tcp.length;
+
+	output->check = calc_csum((uint16_t *)pseudo_ipv4,12);
+
+	free(pseudo_ipv4);
+} */
 
 void create_icmp_packet(struct s_icmp *icmp, uint8_t type, uint8_t code, uint32_t data)
 {
