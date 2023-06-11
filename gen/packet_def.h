@@ -114,4 +114,4 @@ struct s_icmp
 	uint32_t data;
 };
 
-#endif /* PACKET_DEF_H */
+#endif

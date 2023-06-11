@@ -38,9 +38,9 @@ void degen_udp(char *buf, struct s_udphdr *output)
 void print_udp(struct s_udphdr hdr)
 {
 	printf("UDP DATA:\n");
-	printf("SRC %i\n",ntohs(hdr.sport));
-	printf("DST %i\n",ntohs(hdr.dport));
-	printf("LEN %i\n",ntohs(hdr.len));
-	printf("CHK 0x%x\n",ntohs(hdr.check));
+	printf("SRC   %i\n",ntohs(hdr.sport));
+	printf("DST   %i\n",ntohs(hdr.dport));
+	printf("LEN   %i\n",ntohs(hdr.len));
+	printf("CHK   0x%x\n",ntohs(hdr.check));
 }
 
