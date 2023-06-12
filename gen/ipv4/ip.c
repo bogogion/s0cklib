@@ -46,8 +46,8 @@ void degen_iphdr(char *buf, struct s_iphdr4 *hdr, struct ip_bit_hold *bit_hold)
 	bit_hold->ver  = ((hdr->ver_ihl >> 4));
 	bit_hold->dscp = ((hdr->dscp_ecn) >> 4);
 	bit_hold->ecn  = ((hdr->dscp_ecn << 4) >> 4);
-	bit_hold->flag = ((hdr->flag_off >> 13));
-	bit_hold->off  = ((hdr->flag_off << 3) >> 3);
+	bit_hold->flag = ((ntohs(hdr->flag_off) >> 13));
+	bit_hold->off  = ((ntohs(hdr->flag_off) << 3) >> 3);
 }
 
 void print_iphdr(struct s_iphdr4 hdr, struct ip_bit_hold bit_hold)
